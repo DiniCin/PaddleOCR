@@ -1,15 +1,16 @@
 Global:
-  output_num: 10
+  output_num: 2800
   output_dir: output_data
   use_gpu: false
   image_height: 32
   image_width: 320
-  standard_font: fonts/en_standard.ttf
+  standard_font: fonts/fonts-japanese-gothic.ttf
 TextDrawer:
   fonts:
     en: fonts/en_standard.ttf
     ch: fonts/ch_standard.ttf
     ko: fonts/ko_standard.ttf
+    jp: fonts/simsun.ttc
 StyleSampler:
   method: DatasetSampler
   image_home: examples
@@ -17,7 +18,7 @@ StyleSampler:
   with_label: true
 CorpusGenerator:
   method: FileCorpus
-  language: ch
+  language: jp
   corpus_file: examples/corpus/example.txt
 Predictor:
   method: StyleTextRecPredictor
@@ -31,7 +32,7 @@ Predictor:
   - 0.5
   - 0.5
   - 0.5
-  expand_result: false
+  expand_result: true
   bg_generator:
     pretrain: style_text_models/bg_generator
     module_name: bg_generator

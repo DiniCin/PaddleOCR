@@ -27,17 +27,17 @@ class SimpleWriter(object):
         self.tag = tag
         self.label_file_index = 0
 
-    def save_image(self, image, text_input_label):
+    def save_image(self, image, text_input_label, suffix=""):
         image_home = os.path.join(self.output_dir, "images", self.tag)
         if not os.path.exists(image_home):
             os.makedirs(image_home)
 
-        image_path = os.path.join(image_home, "{}.png".format(self.counter))
+        image_path = os.path.join(image_home, "{}_{}_{}.png".format(self.counter, text_input_label, suffix))
         # todo support continue synth
         cv2.imwrite(image_path, image)
         self.logger.info("generate image: {}".format(image_path))
 
-        image_name = os.path.join(self.tag, "{}.png".format(self.counter))
+        image_name = os.path.join(self.tag, "{}_{}_{}.png".format(self.counter, text_input_label, suffix))
         self.label_dict[image_name] = text_input_label
 
         self.counter += 1

@@ -20,6 +20,7 @@ class StdTextDrawer(object):
             font_height = self.get_valid_height(font_path)
             font = ImageFont.truetype(font_path, font_height)
             self.font_dict[language] = font
+            print(language, " font_path: ", font_path)
 
     def get_valid_height(self, font_path):
         font = ImageFont.truetype(font_path, self.height - 4)

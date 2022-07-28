@@ -70,6 +70,7 @@ class StyleTextRecPredictor(object):
             "fake_text": fake_text,
             "fake_sk": fake_sk,
             "fake_bg": fake_bg,
+            "real_font_text": text_input,
         }
 
     def predict(self, style_input, text_input_list):
@@ -77,6 +78,7 @@ class StyleTextRecPredictor(object):
             return self.predict_single_image(style_input, text_input_list)
 
         synth_result_list = []
+        print("len text_input_list", len(text_input_list))
         for text_input in text_input_list:
             synth_result = self.predict_single_image(style_input, text_input)
             synth_result_list.append(synth_result)

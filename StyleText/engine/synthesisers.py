@@ -69,9 +69,17 @@ class DatasetSynthesiser(ImageSynthesiser):
                 style_input_width=style_input.shape[1])
 
             text_input_label = "".join(text_input_label_list)
+            
+#            print("text_input_label_list", text_input_label_list)
+#            print("text_input_label", text_input_label)
 
             synth_result = self.predictor.predict(style_input, text_input_list)
             fake_fusion = synth_result["fake_fusion"]
-            self.writer.save_image(fake_fusion, text_input_label)
+            fake_text = synth_result["fake_text"]
+            real_text = synth_result["real_font_text"]
+            
+            self.writer.save_image(real_text, text_input_label, "real_font_text")
+            self.writer.save_image(fake_text, text_input_label, "fake_text")
+#            self.writer.save_image(fake_fusion, text_input_label, "fake_fusion")
         self.writer.save_label()
         self.writer.merge_label()
